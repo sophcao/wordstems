@@ -52,7 +52,7 @@ small {
 
 /* start button */
 #start {
-    font-size: 1.1em;
+    font-size: 1em;
     padding: .9em 3em;
     background-color: mintcream;
     border: none;
@@ -85,6 +85,16 @@ small {
   left: 50%;
   text-align: center;
   border-radius: 1em;
+}
+
+#press-enter {
+  font-size: .65em;
+  font-style: italic;
+  margin-top: 0em;
+}
+
+#timer {
+  margin-bottom: 1em;
 }
 
 .end-screen {
