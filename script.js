@@ -215,7 +215,7 @@ function handleWordSubmission() {
     userInput.value = "";
     shakeInvalid();
     return;
-  }tc
+  }
 
   // Check if the word is valid using a dictionary
 
