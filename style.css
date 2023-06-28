@@ -15,7 +15,7 @@ h1 {
     font-style: normal;
     font-weight: lighter;
     margin-bottom: .1em;
-    font-size: 2.5em;
+    font-size: 2.6em;
     font-family: "Caprasimo", display;
 }
 
@@ -50,15 +50,36 @@ small {
     top: 0;
 }
 
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-200px);
+
+  }
+  to {
+
+  }
+}
+
 /* start button */
 #start {
     font-size: 1em;
+    font-weight: bold;
     padding: .9em 3em;
     background-color: mintcream;
     border: none;
     outline: none;
     border-radius: 2em;
     cursor: pointer;
+
+    transition: transform 0.25s ease 0s, 
+    background-color 0.25s, color 0.25s;
+
+}
+
+#start:hover {
+  transform: translateY(-5px);
+  background-color: rgb(244, 165, 178);
+  color: mintcream;
 }
 
 #current-day {
