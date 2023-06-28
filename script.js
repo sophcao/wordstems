@@ -24,6 +24,10 @@ const submittedWords = document.getElementById("submittedWords");
 const plusPoints = document.getElementById("plusPoints");
 let wordArray = [];
 let totalPoints = 0;
+const endScreen = document.querySelector("end-screen");
+const gameOver = document.getElementById("gameOver");
+const yourScore = document.getElementById("yourScore");
+const thanks = document.getElementById("thanks");
 
 function loadDictionary() {
   fetch('dictionary.json')
@@ -40,12 +44,6 @@ function loadDictionary() {
 function isWordValid(word) {
   return dictionary.hasOwnProperty(word);
 }
-
-
-startBtn.addEventListener("click", () => {
-  startPage.classList.add("hide");
-  // start timer
-});
 
 function chooseStem() {
   todayStem = stems[0];
@@ -78,6 +76,44 @@ function init() {
   chooseStem();
   loadDictionary();
 }
+
+function stopGame() {
+  gameWrapper.style.display = "none"; // Hide the game wrapper
+  gameOver.innerText = "Game Over!"
+  yourScore.innerText = `Your Score: ${totalPoints}`;
+  randomEmoji();
+}
+
+const timerElement = document.getElementById("timer");
+let timerInterval;
+let remainingTime = 90; // TIME LIMIT
+
+function startTimer() {
+  timerInterval = setInterval(updateTimer, 1000);
+}
+
+function updateTimer() {
+  if (remainingTime <= 0) {
+    // Timer has reached zero
+    clearInterval(timerInterval);
+    stopGame();
+    return;
+  }
+
+  const minutes = Math.floor(remainingTime / 60);
+  const seconds = remainingTime % 60;
+
+  // Display the remaining time in the timer element
+  timerElement.innerText = `Time remaining: ${minutes}:${seconds.toString().padStart(2, "0")}`;
+
+  remainingTime--;
+}
+
+startBtn.addEventListener("click", () => {
+  startPage.classList.add("hide");
+  startTimer(); // Start the timer
+});
+
 
 function calculatePoints(word) {
   let wordLength = word.length;
@@ -146,3 +182,52 @@ userInput.addEventListener("keydown", (event) => {
     handleWordSubmission();
   }
 });
+
+let emojis = [
+  "1F61A",
+  "1F638",
+  "1F63C",
+  "1F63D",
+  "1F911",
+  "1F917",
+  "1F917",
+  "1F928",
+  "1F92D",
+  "1F930",
+  "1F92F",
+  "1F951",
+  "1F954",
+  "1F956",
+  "1F958",
+  "1F95E",
+  "1F95F",
+  "1F968",
+  "1F967",
+  "1F984",
+  "1F989",
+  "1F991",
+  "1F98D",
+  "1F9C0",
+  "1F9D9",
+  "1F6C0",
+  "1F632",
+  "1F60B",
+  "1F607",
+  "1F525",
+  "1F485",
+  "1F479",
+  "1F437",
+  "1F42E",
+  "1F422",
+  "1F41D",
+  "1F412",
+  "1F34B",
+
+  // 38
+];
+
+function randomEmoji() {
+  randomIndex = Math.floor(Math.random() * emojis.length); 
+  emojiHex = emojis[randomIndex];
+  thanks.innerHTML += `&#x${emojiHex}`;
+}
