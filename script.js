@@ -8,6 +8,44 @@ let stems = [
   "ape",
   "iti",
   "ati",
+  "uni",
+  "era",
+  "und",
+  "and",
+  "ind",
+  "ain",
+  "ter",
+  "ome",
+  "oni",
+  "qua",
+  "let",
+  "ack",
+  "ick",
+  "tri",
+  "tro",
+  "tra",
+  "por",
+  "opp",
+  "app",
+  "ava",
+  "les",
+  "ess",
+  "pos",
+  "sed",
+  "tab",
+  "cab",
+  "dab",
+  "able",
+  "nec",
+  "nes",
+  "mil",
+  "san",
+  "whi",
+  "him",
+  "cri",
+  "pli",
+  "ple",
+  "end",
 ];
 
 let dictionary = {};
@@ -46,9 +84,11 @@ function isWordValid(word) {
 }
 
 function chooseStem() {
-  todayStem = stems[0];
+  console.log(stems.length);
+  randomStem = stems[Math.floor(Math.random() * stems.length)];
+  todayStem = randomStem;
   stemPrompt.innerHTML =
-  `Today's Stem:   <b>${todayStem}</b><br><br>`;
+  `Stem:   <b>${todayStem}</b><br><br>`;
 }
 
 // get day to display on start screen

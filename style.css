@@ -22,7 +22,13 @@ h1 {
 p {
     margin-top: 0em;
     font-size: 1em;
-    margin-bottom: 1em;
+    margin-bottom: .75em;
+}
+
+#example {
+  font-size: .85em;
+  margin-top: 0em;
+  margin-bottom: 1.3em;
 }
 
 small {
