@@ -121,7 +121,8 @@ function init() {
 function stopGame() {
   gameWrapper.style.display = "none"; // Hide the game wrapper
   gameOver.innerText = "Game Over!"
-  yourScore.innerText = `Your Score: ${totalPoints}`;
+  yourScore.innerHTML = `Your Score: <b>${totalPoints}</b>`;
+  
   randomEmoji();
 }
 
@@ -185,6 +186,15 @@ function shakeInvalid() {
   });
 }
 
+function bouncePoints() {
+  plusPoints.classList.add("bounce-animation");
+
+  // Remove the animation class after the animation finishes
+  plusPoints.addEventListener("animationend", () => {
+    plusPoints.classList.remove("bounce-animation");
+  });
+}
+
 function handleWordSubmission() {
   const word = userInput.value.trim().toLowerCase();
   checkWord.innerText = "";
@@ -222,7 +232,8 @@ function handleWordSubmission() {
   if (isWordValid(word)) {
     // Word is valid
     let points = calculatePoints(word);
-    plusPoints.innerHTML = `+ ${points} !`;
+    plusPoints.innerHTML = `+${points}!`;
+    bouncePoints();
     totalPoints += points;
     if (wordArray.length === 0) {
       submittedWords.innerHTML += (`${word}`);

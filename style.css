@@ -102,6 +102,7 @@ small {
   font-size: .65em;
   font-style: italic;
   margin-top: 0em;
+  margin-bottom: .2em;
 }
 
 #userInput{
@@ -137,16 +138,32 @@ small {
   }
 }
 
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.bounce-animation {
+  animation: bounce 0.4s;
+}
 
 #plusPoints {
-  font-size: 1em;
-  font-style: bold;
-  background-color: none;
+  font-size: 1.3em;
+  font-weight: bold;
 }
 
 #checkWord {
   color: white;
   font-size: .8em;
+  margin-top: 0.2em;
+  margin-bottom: 1em;
 }
 
 .game-wrapper span {
@@ -176,6 +193,23 @@ small {
   font-weight: normal;
   font-style: normal;
   font-family: "Caprasimo", display;
+  margin-bottom: .3em;
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#yourScore {
+  font-size: 1.7em;
+  margin-bottom: .4em;
 }
 
 #thanks {
