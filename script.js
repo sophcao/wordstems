@@ -46,6 +46,7 @@ let stems = [
   "pli",
   "ple",
   "end",
+  "less",
 ];
 
 let dictionary = {};
@@ -158,7 +159,23 @@ startBtn.addEventListener("click", () => {
 function calculatePoints(word) {
   let wordLength = word.length;
   let stemLength = todayStem.length;
-  return wordLength - stemLength;
+  let points = wordLength - stemLength;
+  if (wordLength <= 6) {
+    points += 1;
+  }
+  else if (wordLength === 7) {
+    points += 2;
+  }
+  else if (wordLength === 8 || wordLength === 9) {
+    points += 3;
+  }
+  else if (wordLength < 15) {
+    points += 5;
+  }
+  else {
+    points += 7;
+  }
+  return points;
 }
 
 function handleWordSubmission() {
