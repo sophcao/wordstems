@@ -50,16 +50,6 @@ small {
     top: 0;
 }
 
-@keyframes slideInLeft {
-  from {
-    transform: translateX(-200px);
-
-  }
-  to {
-
-  }
-}
-
 /* start button */
 #start {
     font-size: 1em;
@@ -96,9 +86,9 @@ small {
 .game-wrapper {
   position: absolute;
   width: 70%;
-  height: 40%;
+  height: 50%;
   max-width: 37em;
-  background-color: mintcream;
+  background-color: white;
   padding: 7em 3em;
   position: absolute;
   transform: translate(-50%, -50%);
@@ -112,6 +102,55 @@ small {
   font-size: .65em;
   font-style: italic;
   margin-top: 0em;
+}
+
+#userInput{
+  width: 40%;
+  padding: .5em;
+  border: 3px solid #d7e3fc;
+  background-color: #edf2fb;
+  border-radius: 1em;
+  outline: none;
+  color: #82a5f1;
+  font-size: .9em;
+}
+
+.shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
+#plusPoints {
+  font-size: 1em;
+  font-style: bold;
+  background-color: none;
+}
+
+#checkWord {
+  color: white;
+  font-size: .8em;
+}
+
+.game-wrapper span {
+  background-color: rgb(236, 146, 161);;
 }
 
 #timer {

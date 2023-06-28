@@ -89,7 +89,7 @@ function chooseStem() {
   randomStem = stems[Math.floor(Math.random() * stems.length)];
   todayStem = randomStem;
   stemPrompt.innerHTML =
-  `Stem:   <b>${todayStem}</b><br><br>`;
+  `<b>${todayStem}</b><br><br>`;
 }
 
 // get day to display on start screen
@@ -178,6 +178,13 @@ function calculatePoints(word) {
   return points;
 }
 
+function shakeInvalid() {
+  userInput.classList.add("shake");
+  userInput.addEventListener("animationend", () => {
+    userInput.classList.remove("shake");
+  });
+}
+
 function handleWordSubmission() {
   const word = userInput.value.trim().toLowerCase();
   checkWord.innerText = "";
@@ -185,26 +192,30 @@ function handleWordSubmission() {
 
   if (word.length === 0) {
     checkWord.innerText = "Empty Submission";
+    shakeInvalid();
     return; // Ignore empty submissions
   }
 
   if (word === todayStem) {
     checkWord.innerText = "Word cannot be same as stem.";
     userInput.value = "";
+    shakeInvalid();
     return;
   }
 
   if (!word.includes(todayStem)) {
     checkWord.innerText = "Word must contain stem.";
     userInput.value = ""; // Clear the input box after displaying the message
+    shakeInvalid();
     return;
   }
 
   if (wordArray.includes(word)) {
     checkWord.innerText = "Word already submitted.";
     userInput.value = "";
+    shakeInvalid();
     return;
-  }
+  }tc
 
   // Check if the word is valid using a dictionary
 
@@ -223,6 +234,7 @@ function handleWordSubmission() {
   } else {
     // Word is not valid
     console.log(`Invalid word: '${word}'`);
+    shakeInvalid();
     checkWord.innerText = "Invalid word: not found in dictionary.";
   }
 

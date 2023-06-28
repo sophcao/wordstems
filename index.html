@@ -24,17 +24,19 @@
     <div class="game-wrapper">
         <div id="timer">Time remaining: 1:30</div>
         <div class="stem-prompt"></div>
-        <label for="usr">Your words: </label>
-        <input type="text" id="userInput" name="usr">
-        <small id="plusPoints"></small><br>
-        <small id="press-enter">press enter to submit</small>
+        <div class="inputBox">
+            <label>Your words: </label>
+            <input type="text" id="userInput" name="usr">
+            <small id="plusPoints"></small>
+        </div>
+        <small id="press-enter">press enter to submit</small><br>
         
-        <p id="checkWord"></p>
+        <span id="checkWord"></span>
         <p id="submittedWords"></p>
         
     </div>
     <div class="start-page">
-        <h1 class="WordStems">Welcome to WordStems!</h1>
+        <h1 class="welcome">Welcome to WordStems!</h1>
         <p><b>BETA</b></p>
         <p>Make as many words as you can from the stem.</p>
         <small id="example">ex: <b>ate</b> -> encapsul<b>ate</b>, <b>ate</b>lier, correl<b>ate</b>...</small>
