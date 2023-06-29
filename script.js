@@ -175,8 +175,11 @@ function calculatePoints(word) {
   else if (wordLength < 15) {
     points += 5;
   }
-  else {
+  else if (wordLength < 16) {
     points += 7;
+  }
+  else {
+    points += 10;
   }
   return points;
 }
@@ -327,6 +330,7 @@ function playAgain() {
   remainingTime = 90; // TIME LIMIT
   timerElement.innerHTML = "Time remaining: 1:30";
   startTimer();
+  userInput.value = "";
 
   // Show the game wrapper
   gameWrapper.style.display = "block";
