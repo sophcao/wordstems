@@ -148,8 +148,8 @@ small {
   100% {
     transform: scale(1);
   }
-}
-
+} 
+       
 .bounce-animation {
   animation: bounce 0.4s;
 }
