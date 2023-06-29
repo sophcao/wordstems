@@ -130,7 +130,7 @@ function stopGame() {
 
 const timerElement = document.getElementById("timer");
 let timerInterval;
-let remainingTime = 5; // TIME LIMIT
+let remainingTime = 90; // TIME LIMIT
 
 function startTimer() {
   timerInterval = setInterval(updateTimer, 1000);
