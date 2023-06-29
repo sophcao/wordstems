@@ -67,6 +67,7 @@ const endScreen = document.querySelector("end-screen");
 const gameOver = document.getElementById("gameOver");
 const yourScore = document.getElementById("yourScore");
 const thanks = document.getElementById("thanks");
+const wordList = document.getElementById("wordList");
 
 function loadDictionary() {
   fetch('dictionary.json')
@@ -122,8 +123,9 @@ function stopGame() {
   gameWrapper.style.display = "none"; // Hide the game wrapper
   gameOver.innerText = "Game Over!"
   yourScore.innerHTML = `Your Score: <b>${totalPoints}</b>`;
-  
   randomEmoji();
+  wordList.innerHTML = `${wordArray.join(", ")}`;
+
 }
 
 const timerElement = document.getElementById("timer");
@@ -309,5 +311,28 @@ let emojis = [
 function randomEmoji() {
   randomIndex = Math.floor(Math.random() * emojis.length); 
   emojiHex = emojis[randomIndex];
-  thanks.innerHTML += `&#x${emojiHex}`;
+  yourScore.innerHTML += ` &#x${emojiHex}`;
 }
+
+// play again button
+const playAgainBtn = document.getElementById("playAgain");
+
+function playAgain() {
+  // Reset game state
+  wordArray = [];
+  totalPoints = 0;
+  submittedWords.innerHTML = "";
+  plusPoints.innerHTML = "";
+  chooseStem();
+  remainingTime = 90; // TIME LIMIT
+  timerElement.innerHTML = "Time remaining: 1:30";
+  startTimer();
+
+  // Show the game wrapper
+  gameWrapper.style.display = "block";
+
+  // Hide the end screen
+  endScreen.style.display = "none";
+}
+
+playAgainBtn.addEventListener("click", playAgain);
