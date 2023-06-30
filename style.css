@@ -85,7 +85,7 @@ small {
 
 .game-wrapper {
   position: absolute;
-  width: 70%;
+  width: 75%;
   height: 50%;
   max-width: 37em;
   background-color: white;
@@ -184,7 +184,7 @@ small {
   padding: 3em 3em;
   position: absolute;
   transform: translate(-50%, -50%);
-  top: 26%;
+  top: 24%;
   left: 50%;
   text-align: center;
   border-radius: 1em;
@@ -193,13 +193,13 @@ small {
 .end-screen {
   position: absolute;
   width: 75%;
-  height: 32%;
+  height: 34%;
   max-width: 37em;
   background-color: mintcream;
   padding: 1em 3em;
   position: absolute;
   transform: translate(-50%, -50%);
-  top: 58.5%;
+  top: 58%;
   left: 50%;
   text-align: center;
   border-radius: 1em;
@@ -247,7 +247,8 @@ small {
   position: absolute;
   width: 28%;
   height: 2.5%;
-  max-width: 37em;
+  min-width: 18em;
+  max-width: 40em;
   background-color: rgb(228, 191, 228);
   padding: .8em 2em;
   position: absolute;
@@ -259,7 +260,7 @@ small {
 }
 
 #longestWord {
-  font-size: .73em;
+  font-size: .74em;
 }
 
 .end-button {
