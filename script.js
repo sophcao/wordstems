@@ -190,25 +190,54 @@ function calculatePoints(word) {
   let wordLength = word.length;
   let stemLength = todayStem.length;
   let points = wordLength - stemLength;
-  if (wordLength <= 6) {
+  if (wordLength <= 5) {
     points += 1;
   }
-  else if (wordLength === 7) {
+  else if (wordLength === 6) {
     points += 2;
   }
-  else if (wordLength === 8 || wordLength === 9) {
-    points += 3;
+  else if (wordLength === 7) {
+    points += 4;
   }
-  else if (wordLength < 15) {
+  else if (wordLength === 8) {
     points += 5;
   }
-  else if (wordLength < 16) {
-    points += 7;
+  else if (wordLength === 9) {
+    points += 6;
   }
-  else {
+  else if (wordLength === 10) {
+    points += 8;
+  }
+  else if (wordLength === 11) {
     points += 10;
   }
+  else if (wordLength === 12) {
+    points += 11;
+  }
+  else if (wordLength === 13) {
+    points += 14;
+  }
+  else if (wordLength === 14) {
+    points += 17;
+  }
+  else {
+    points += 20;
+  }
+
+  // double points if word contains stem twice
+  if (hasTwoOccurrences(word, todayStem)) {
+    points *= 2;
+    console.log("double!");
+  }
+  
   return points;
+}
+
+function hasTwoOccurrences(str, subStr) {
+  const regex = new RegExp(subStr, 'g');
+  const matches = str.match(regex);
+  const occurrenceCount = matches ? matches.length : 0;
+  return occurrenceCount === 2;
 }
 
 function shakeInvalid() {
@@ -264,7 +293,14 @@ function handleWordSubmission() {
   if (isWordValid(word)) {
     // Word is valid
     let points = calculatePoints(word);
-    plusPoints.innerHTML = `+${points}!`;
+    
+    if (hasTwoOccurrences(word, todayStem)) {
+      plusPoints.innerHTML = `DOUBLE OCCURANCE +${points}!`;
+    }
+    else {
+      plusPoints.innerHTML = `+${points}!`;
+    }
+
     bouncePoints();
     totalPoints += points;
     if (wordArray.length === 0) {
@@ -353,6 +389,7 @@ function playAgain() {
   totalPoints = 0;
   submittedWords.innerHTML = "";
   plusPoints.innerHTML = "";
+  checkWord.innerHTML = "";
   chooseStem();
   remainingTime = 90; // TIME LIMIT
   timerElement.innerHTML = "Time remaining: 1:30";
