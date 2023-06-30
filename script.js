@@ -68,6 +68,8 @@ const gameOver = document.getElementById("gameOver");
 const yourScore = document.getElementById("yourScore");
 const thanks = document.getElementById("thanks");
 const wordList = document.getElementById("wordList");
+const yourWords = document.getElementById("yourWords");
+const longestWordLength = document.getElementById("longestWord");
 
 function loadDictionary() {
   fetch('dictionary.json')
@@ -119,13 +121,38 @@ function init() {
   loadDictionary();
 }
 
+function findLongestWord(wordArray) {
+  let longestWord = wordArray[0];
+  let maxLength = wordArray[0].length;
+  if (wordArray.length === 0) {
+    return 0;
+  }
+  for (let i = 0; i < wordArray.length; i++) {
+    let thisWordLength = wordArray[i].length;
+    if (thisWordLength > maxLength) {
+      longestWord = wordArray[i];
+      maxLength = thisWordLength;
+    }
+  }
+  return maxLength;
+}
+
 function stopGame() {
   gameWrapper.style.display = "none"; // Hide the game wrapper
   gameOver.innerText = "Game Over!"
   yourScore.innerHTML = `Your Score: <b>${totalPoints}</b>`;
   randomEmoji();
+  numberOfWords = wordArray.length;
+  if (numberOfWords === 1) {
+    yourWords.innerHTML = `you made <b> <span style="color:#6691ed">${numberOfWords}</b></span> word:`;
+  }
+  else {
+    yourWords.innerHTML = `you made <b> <span style="color:#6691ed">${numberOfWords}</b></span> words:`;
+  }
   wordList.innerHTML = `${wordArray.join(", ")}`;
-
+  maxWordLength = findLongestWord(wordArray);
+  longestWordLength.innerHTML = 
+  `✰ your longest word was <b> <span style="color:#6691ed">${maxWordLength}</b></span> letters long! ✰`; 
 }
 
 const timerElement = document.getElementById("timer");

@@ -177,14 +177,14 @@ small {
 
 .end-screen-title {
   position: absolute;
-  width: 65%;
+  width: 75%;
   height: 10%;
   max-width: 37em;
   background-color: mintcream;
   padding: 3em 3em;
   position: absolute;
   transform: translate(-50%, -50%);
-  top: 30%;
+  top: 26%;
   left: 50%;
   text-align: center;
   border-radius: 1em;
@@ -192,14 +192,14 @@ small {
 
 .end-screen {
   position: absolute;
-  width: 65%;
-  height: 24%;
+  width: 75%;
+  height: 32%;
   max-width: 37em;
   background-color: mintcream;
   padding: 1em 3em;
   position: absolute;
   transform: translate(-50%, -50%);
-  top: 58%;
+  top: 58.5%;
   left: 50%;
   text-align: center;
   border-radius: 1em;
@@ -231,16 +231,35 @@ small {
 }
 
 #yourWords {
-  margin-bottom: .5em;
+  margin-bottom: .3em;
   margin-top: 1em;
   font-style: italic;
-
+  font-size: 1.1em;
 }
 
 #wordList {
   margin-top: 0em;
   font-size: .9em;
-  margin-bottom: 2em;
+  margin-bottom: .6em;
+}
+
+.longest-wrapper {
+  position: absolute;
+  width: 28%;
+  height: 2.5%;
+  max-width: 37em;
+  background-color: rgb(228, 191, 228);
+  padding: .8em 2em;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 71%;
+  left: 50%;
+  text-align: center;
+  border-radius: 1em;
+}
+
+#longestWord {
+  font-size: .73em;
 }
 
 .end-button {
@@ -252,7 +271,7 @@ small {
   padding: 0em 3em;
   position: absolute;
   transform: translate(-50%, -50%);
-  top: 80%;
+  top: 85%;
   left: 50%;
   text-align: center;
   border-radius: 1em;
