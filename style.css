@@ -171,8 +171,30 @@ small {
   background-color: rgb(236, 146, 161);;
 }
 
+.timer-wrapper {
+  position: absolute;
+  width: 15%;
+  height: 4.5%;
+  max-width: 37em;
+  background-color: rgb(244, 165, 178);
+  padding: .5em 0em;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 12%;
+  left: 50%;
+  text-align: center;
+  border-radius: 1em;
+}
+
 #timer {
-  margin-bottom: 1em;
+  margin-bottom: .6em;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: mintcream;
+}
+
+.stem-prompt {
+  margin-top: .3em;
 }
 
 .end-screen-title {
