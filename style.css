@@ -173,7 +173,7 @@ small {
 
 .timer-wrapper {
   position: absolute;
-  width: 15%;
+  width: 20%;
   height: 4.5%;
   max-width: 37em;
   background-color: rgb(244, 165, 178);
@@ -209,7 +209,8 @@ small {
   top: 24%;
   left: 50%;
   text-align: center;
-  border-radius: 1em;
+  border-radius: 20em;
+  z-index: 0;
 }
 
 .end-screen {
@@ -225,6 +226,7 @@ small {
   left: 50%;
   text-align: center;
   border-radius: 1em;
+  overflow: auto;
 }
 
 #gameOver {
@@ -232,7 +234,7 @@ small {
   font-weight: normal;
   font-style: normal;
   font-family: "Caprasimo", display;
-  margin-bottom: .15em;
+  margin-bottom: 0.1em;
   margin-top: 0em;
 }
 
@@ -248,7 +250,7 @@ small {
 }
 
 #yourScore {
-  font-size: 1.7em;
+  font-size: 1.5em;
   margin-bottom: 1em;
 }
 
@@ -267,10 +269,10 @@ small {
 
 .longest-wrapper {
   position: absolute;
-  width: 28%;
+  width: 20%;
   height: 2.5%;
   min-width: 18em;
-  max-width: 40em;
+  max-width: 35em;
   background-color: rgb(228, 191, 228);
   padding: .8em 2em;
   position: absolute;
@@ -321,3 +323,45 @@ small {
   color: mintcream;
 }
 
+
+@media screen and (max-width: 600px) {
+  #wordList {
+    margin-top: 0em;
+    font-size: .75em;
+    margin-bottom: .6em;
+  }
+
+  #yourScore {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+  }
+
+  #gameOver {
+    font-size: 2.2em;
+    font-weight: normal;
+    font-style: normal;
+    font-family: "Caprasimo", display;
+    margin-bottom: 0em;
+    margin-top: 0em;
+  }
+
+  .end-screen-title {
+    padding: 2em 1.2em;
+    margin-top: 5%;
+  }
+  
+  .end-screen {
+    padding: .8em 1.2em;
+    top: 58.5%;
+  }
+
+  .longest-wrapper {
+    width: 30%;
+    height: 2.5%;
+    min-width: 17em;
+    max-width: 40em;
+    padding: .5em .5em;
+    top: 72.5%;
+    left: 50%;
+  }
+}
