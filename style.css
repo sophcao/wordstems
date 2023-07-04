@@ -154,6 +154,22 @@ small {
   animation: bounce 0.4s;
 }
 
+@keyframes jump {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.bounce-animation-infinite {
+  animation: jump 1s infinite;
+}
+
 #plusPoints {
   font-size: 1.3em;
   font-weight: bold;
@@ -209,8 +225,7 @@ small {
   top: 24%;
   left: 50%;
   text-align: center;
-  border-radius: 20em;
-  z-index: 0;
+  border-radius: 1em;
 }
 
 .end-screen {
@@ -249,9 +264,25 @@ small {
   }
 }
 
-#yourScore {
-  font-size: 1.5em;
-  margin-bottom: 1em;
+.scoreGrid {
+  display: flex;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+#yourScore, #yourHighScore {
+  margin-top: .3em;
+  background-color: rgb(228, 191, 228);
+  padding: .4em .4em;
+  border-radius: .2em;
+  width: 40%;
+  font-size: 1em;
+  margin-bottom: .2em;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #yourWords {
@@ -274,13 +305,13 @@ small {
   min-width: 18em;
   max-width: 35em;
   background-color: rgb(228, 191, 228);
-  padding: .8em 2em;
+  padding: .5em 2em;
   position: absolute;
   transform: translate(-50%, -50%);
   top: 71%;
   left: 50%;
   text-align: center;
-  border-radius: 1em;
+  border-radius: .2em;
 }
 
 #longestWord {
@@ -331,16 +362,14 @@ small {
     margin-bottom: .6em;
   }
 
-  #yourScore {
-    font-size: 1.2em;
-    margin-bottom: 1em;
+  #yourScore, #yourHighScore {
+    font-size: .8em;
   }
 
   #gameOver {
     font-size: 2.2em;
     font-weight: normal;
     font-style: normal;
-    font-family: "Caprasimo", display;
     margin-bottom: 0em;
     margin-top: 0em;
   }
@@ -363,5 +392,11 @@ small {
     padding: .5em .5em;
     top: 72.5%;
     left: 50%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  * {
+    font-size: 92%;
   }
 }
