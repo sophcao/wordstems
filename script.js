@@ -670,6 +670,7 @@ const wordList = document.getElementById("wordList");
 const yourWords = document.getElementById("yourWords");
 const longestWordLength = document.getElementById("longestWord");
 const yourHighScore = document.getElementById("yourHighScore");
+const scoreCount = document.getElementById("scoreCount");
 
 function loadDictionary() {
   fetch('dictionary.json')
@@ -895,6 +896,15 @@ function bouncePoints() {
   });
 }
 
+function bopPoints() {
+  scoreCount.classList.add("bop-animation");
+
+  // Remove the animation class after the animation finishes
+  scoreCount.addEventListener("animationend", () => {
+    scoreCount.classList.remove("bop-animation");
+  });
+}
+
 function handleWordSubmission() {
   const word = userInput.value.trim().toLowerCase();
   checkWord.innerText = "";
@@ -949,6 +959,11 @@ function handleWordSubmission() {
       submittedWords.innerHTML += (`, ${word}`);
     }
     wordArray.push(word);
+
+    // UPDATE POINT COUNTER
+    scoreCount.innerHTML = totalPoints;
+    // bopPoints();
+
   } else {
     // Word is not valid
     console.log(`Invalid word: '${word}'`);
@@ -1143,6 +1158,7 @@ function playAgain() {
   submittedWords.innerHTML = "";
   plusPoints.innerHTML = "";
   checkWord.innerHTML = "";
+  scoreCount.innerHTML = 0;
   chooseStem();
   remainingTime = 90; // TIME LIMIT
   timerElement.innerHTML = "&#x1F553  1:30";
