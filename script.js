@@ -1159,6 +1159,7 @@ function playAgain() {
   plusPoints.innerHTML = "";
   checkWord.innerHTML = "";
   scoreCount.innerHTML = 0;
+  userInput.classList.remove("shake");
   chooseStem();
   remainingTime = 90; // TIME LIMIT
   timerElement.innerHTML = "&#x1F553  1:30";
