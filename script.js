@@ -534,7 +534,7 @@ let stems = [
 "ode",
 "iso",
 "amp",
-"usl",
+// "usl", 
 "eal",
 "bly",
 "cle",
@@ -671,6 +671,14 @@ const yourWords = document.getElementById("yourWords");
 const longestWordLength = document.getElementById("longestWord");
 const yourHighScore = document.getElementById("yourHighScore");
 const scoreCount = document.getElementById("scoreCount");
+const svgContainer = document.getElementById("svg");
+const animItem = bodymovin.loadAnimation({
+  wrapper: svgContainer,
+  animType: 'svg',
+  loop: false,
+  autoplay: false,
+  path: 'https://assets9.lottiefiles.com/packages/lf20_u4yrau.json'
+});
 
 function loadDictionary() {
   fetch('dictionary.json')
@@ -822,6 +830,7 @@ function updateTimer() {
 startBtn.addEventListener("click", () => {
   startPage.classList.add("hide");
   startTimer(); // Start the timer
+  
 });
 
 
@@ -905,6 +914,10 @@ function bopPoints() {
   });
 }
 
+function confetti() {
+  animItem.goToAndPlay(0, true);
+}
+
 function handleWordSubmission() {
   const word = userInput.value.trim().toLowerCase();
   checkWord.innerText = "";
@@ -945,12 +958,16 @@ function handleWordSubmission() {
     
     if (hasTwoOccurrences(word, todayStem)) {
       plusPoints.innerHTML = `DOUBLE OCCURANCE +${points}!`;
+      confetti();
     }
     else {
       plusPoints.innerHTML = `+${points}!`;
     }
 
     bouncePoints();
+    if (word.length >= 11) {
+      confetti();
+    }
     totalPoints += points;
     if (wordArray.length === 0) {
       submittedWords.innerHTML += (`${word}`);

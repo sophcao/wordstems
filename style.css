@@ -90,7 +90,6 @@ small {
   max-width: 37em;
   background-color: white;
   padding: 7em 3em;
-  position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
@@ -240,8 +239,15 @@ small {
   margin-top: .3em;
 }
 
-.end-screen-title {
+.svg {
+  width: 20px;
   position: absolute;
+  top: -40px;
+  left: -30px;
+
+}
+
+.end-screen-title {
   width: 75%;
   height: 10%;
   max-width: 37em;
@@ -256,7 +262,6 @@ small {
 }
 
 .end-screen {
-  position: absolute;
   width: 75%;
   height: 34%;
   max-width: 37em;
@@ -326,10 +331,9 @@ small {
 }
 
 .longest-wrapper {
-  position: absolute;
   width: 20%;
   height: 2.5%;
-  min-width: 18em;
+  min-width: 15em;
   max-width: 35em;
   background-color: rgb(228, 191, 228);
   padding: .5em 2em;
@@ -346,7 +350,6 @@ small {
 }
 
 .end-button {
-  position: absolute;
   width: 65%;
   height: 10%;
   max-width: 37em;
@@ -382,7 +385,7 @@ small {
 }
 
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 675px) {
   #wordList {
     margin-top: 0em;
     font-size: .75em;
@@ -390,14 +393,14 @@ small {
   }
 
   #yourScore, #yourHighScore {
-    font-size: .85em;
+    font-size: .78em;
   }
 
   #gameOver {
-    font-size: 2.2em;
+    font-size: 2em;
     font-weight: normal;
     font-style: normal;
-    margin-bottom: 0em;
+    margin-bottom: .2em;
     margin-top: 0em;
   }
 
@@ -422,8 +425,26 @@ small {
   }
 }
 
-@media screen and (max-width: 400px) {
-  * {
-    font-size: 92%;
+@media screen and (max-width: 550px) {
+  #yourScore, #yourHighScore {
+    font-size: .75em;
+  }
+  #gameOver {
+    font-size: 1.9em;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  #yourScore, #yourHighScore {
+    font-size: .6em;
+  }
+  #gameOver {
+    font-size: 1.8em;
+  }
+}
+
+@media screen and (min-height: 800px) {
+  #gameOver {
+    margin-top: .26em;
   }
 }
