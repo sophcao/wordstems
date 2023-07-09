@@ -574,7 +574,7 @@ let stems = [
 "ama",
 "une",
 "ped",
-"rdi",
+// "rdi",
 "dne",
 "nou",
 "ake",
@@ -664,11 +664,13 @@ let wordArray = [];
 let totalPoints = 0;
 const endScreen = document.querySelector(".end-screen");
 const gameOver = document.getElementById("gameOver");
+const endStem = document.getElementById("end-stem");
 const yourScore = document.getElementById("yourScore");
 const thanks = document.getElementById("thanks");
 const wordList = document.getElementById("wordList");
 const yourWords = document.getElementById("yourWords");
 const longestWordLength = document.getElementById("longestWord");
+const otherWords = document.getElementById("otherWords");
 const yourHighScore = document.getElementById("yourHighScore");
 const scoreCount = document.getElementById("scoreCount");
 const svgContainer = document.getElementById("svg");
@@ -689,6 +691,19 @@ function loadDictionary() {
     })
     .catch(error => {
       console.log('Error loading dictionary:', error);
+    });
+}
+
+let commonWords = [];
+function loadCommonWords() {
+  fetch('common_words.txt')
+    .then(response => response.text())
+    .then(data => {
+      commonWords = data.split('\n');
+      console.log('Common words loaded successfully!');
+    })
+    .catch(error => {
+      console.log('Error loading common words:', error);
     });
 }
 
@@ -727,6 +742,7 @@ function displayCurrentDay() {
 function init() {
   displayCurrentDay();
   loadDictionary();
+  loadCommonWords();
   chooseStem();
 }
 
@@ -773,12 +789,113 @@ function checkHighScore(score) {
   return false;
 }
 
+function findOtherWords() {
+  // Iterate over the dictionary to find words
+  // for (const word in dictionary) {
+  //   if (dictionary.hasOwnProperty(word) && word.includes(todayStem) && !wordArray.includes(word)) {
+  //     const wordLength = word.length;
+  //     if (wordLength === 10) {
+  //       tenLetterWords.push(word);
+  //     } else if (wordLength === 11) {
+  //       elevenLetterWords.push(word);
+  //     } else if (wordLength === 12) {
+  //       twelveLetterWords.push(word);
+  //     } else if (wordLength === 9) {
+  //       nineLetterWords.push(word);
+  //     }
+  //   }
+  // }
+
+  const sevenLetterWords = [];
+  const eightLetterWords = [];
+  const nineLetterWords = [];
+  const tenLetterWords = [];
+  const elevenLetterWords = [];
+  const twelveLetterWords = [];
+
+  // Iterate over the commonWords array to find words
+  commonWords.forEach(word => {
+    if (word.includes(todayStem) && !wordArray.includes(word)) {
+      const wordLength = word.length;
+      if (wordLength === 10) {
+        tenLetterWords.push(word);
+      } else if (wordLength === 11) {
+        elevenLetterWords.push(word);
+      } else if (wordLength === 12) {
+        twelveLetterWords.push(word);
+      } else if (wordLength === 9) {
+        nineLetterWords.push(word);
+      } else if (wordLength === 8) {
+        eightLetterWords.push(word);
+      } else if (wordLength === 7) {
+        sevenLetterWords.push(word);
+      }
+    }
+  });
+
+  console.log(sevenLetterWords.length);
+  console.log(eightLetterWords.length);
+  console.log(nineLetterWords.length);
+  console.log(tenLetterWords.length);
+  console.log(elevenLetterWords.length);
+  console.log(twelveLetterWords.length);
+
+
+  // choose random word from those arrays
+  let randomNine = nineLetterWords[Math.floor(Math.random() * nineLetterWords.length)];
+  let randomTen = tenLetterWords[Math.floor(Math.random() * tenLetterWords.length)];
+  let randomEleven = elevenLetterWords[Math.floor(Math.random() * elevenLetterWords.length)];
+  let randomTwelve = twelveLetterWords[Math.floor(Math.random() * twelveLetterWords.length)];
+  
+  let randomSeven;
+  let randomEight;
+  // If the arrays are empty, draw from the eightLetterWords array
+  if (!randomNine || !randomTen || !randomEleven || !randomTwelve) {
+    randomEight = eightLetterWords.length > 0 ? eightLetterWords[Math.floor(Math.random() * eightLetterWords.length)] : "";
+    if (!randomEight) {
+      randomSeven = sevenLetterWords[Math.floor(Math.random() * sevenLetterWords.length)];
+    }
+  }
+
+  // Generate the HTML content based on the available random words
+  let htmlContent = "<span><b>Other Possible Words:</b> <i>";
+
+  if (randomSeven) {
+    htmlContent += randomEight + ", ";
+  }
+  if (randomEight) {
+    htmlContent += randomEight + ", ";
+  }
+  if (randomNine) {
+    htmlContent += randomNine + ", ";
+  }
+  if (randomTen) {
+    htmlContent += randomTen + ", ";
+  }
+  if (randomEleven) {
+    htmlContent += randomEleven + ", ";
+  }
+  if (randomTwelve) {
+    htmlContent += randomTwelve + ", ";
+  }
+
+  // Remove the trailing comma and space
+  htmlContent = htmlContent.replace(/, $/, "");
+
+  htmlContent += "</i></span>";
+
+  otherWords.innerHTML = htmlContent;
+
+}
+
+
 function stopGame() {
   let newHighScore = checkHighScore(totalPoints);
   let highScore = getHighScore();
   console.log(`high score: ${highScore}`);
   gameWrapper.style.display = "none"; // Hide the game wrapper
   gameOver.innerText = "Game Over!"
+  endStem.innerHTML = todayStem;
   yourScore.innerHTML = `Your Score: <b>${totalPoints}</b>`;
   // if new high score, display new high score message and animation
   if (newHighScore) {
@@ -800,6 +917,8 @@ function stopGame() {
   maxWordLength = findLongestWord(wordArray);
   longestWordLength.innerHTML = 
   `your longest word was <b> <span style="color:#6691ed">${maxWordLength}</b></span> letters long!`; 
+
+  findOtherWords();
 }
 
 const timerElement = document.getElementById("timer");
