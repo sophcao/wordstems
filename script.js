@@ -790,22 +790,6 @@ function checkHighScore(score) {
 }
 
 function findOtherWords() {
-  // Iterate over the dictionary to find words
-  // for (const word in dictionary) {
-  //   if (dictionary.hasOwnProperty(word) && word.includes(todayStem) && !wordArray.includes(word)) {
-  //     const wordLength = word.length;
-  //     if (wordLength === 10) {
-  //       tenLetterWords.push(word);
-  //     } else if (wordLength === 11) {
-  //       elevenLetterWords.push(word);
-  //     } else if (wordLength === 12) {
-  //       twelveLetterWords.push(word);
-  //     } else if (wordLength === 9) {
-  //       nineLetterWords.push(word);
-  //     }
-  //   }
-  // }
-
   const sevenLetterWords = [];
   const eightLetterWords = [];
   const nineLetterWords = [];
@@ -840,6 +824,30 @@ function findOtherWords() {
   console.log(elevenLetterWords.length);
   console.log(twelveLetterWords.length);
 
+  // if no other words are found in common words list, pull from dictionary 
+  if (!sevenLetterWords.length && !eightLetterWords.length && !nineLetterWords.length 
+    && !tenLetterWords.length && !elevenLetterWords.length && !twelveLetterWords.length)  {
+     // Iterate over the dictionary to find words
+      for (const word in dictionary) {
+        if (dictionary.hasOwnProperty(word) && word.includes(todayStem) && !wordArray.includes(word)) {
+          const wordLength = word.length;
+          if (wordLength === 10) {
+            tenLetterWords.push(word);
+          } else if (wordLength === 11) {
+            elevenLetterWords.push(word);
+          } else if (wordLength === 12) {
+            twelveLetterWords.push(word);
+          } else if (wordLength === 9) {
+            nineLetterWords.push(word);
+          }
+        }
+      }
+    }
+
+  console.log(nineLetterWords.length);
+  console.log(tenLetterWords.length);
+  console.log(elevenLetterWords.length);
+  console.log(twelveLetterWords.length);
 
   // choose random word from those arrays
   let randomNine = nineLetterWords[Math.floor(Math.random() * nineLetterWords.length)];
