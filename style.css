@@ -1,14 +1,21 @@
 * {
   font-family: "Poppins", sans-serif;
 }
+
+@font-face {
+  font-family: superFunky;
+  src: url(Super-Funky.ttf);
+}
+
 body {
   background-color: rgb(248, 214, 225);
+  overflow-x: hidden;
 }
 
 em {
   font-weight: normal;
   font-style: normal;
-  font-family: "Caprasimo", display;
+  font-family: "superFunky", display;
 }
 
 h1 {
@@ -16,7 +23,7 @@ h1 {
     font-weight: lighter;
     margin-bottom: .1em;
     font-size: 3em;
-    font-family: "Caprasimo", display;
+    font-family: "superFunky", display;
 }
 
 p {
@@ -48,6 +55,7 @@ small {
     justify-content: center;
     flex-direction: column;
     top: 0;
+    overflow: hidden; /* Prevent scrolling on the start page */
 }
 
 /* start button */
@@ -95,6 +103,7 @@ small {
   left: 50%;
   text-align: center;
   border-radius: 1em;
+  overflow: hidden; /* Prevent scrolling on the game wrapper */
 }
 
 #press-enter {
@@ -228,7 +237,7 @@ small {
   position: absolute;
   transform: translate(-50%, -50%);
   top: 12%;
-  left: 90%;
+  left: 88%;
   text-align: center;
   border-radius: .2em;
   padding: .5em 1em;
@@ -249,13 +258,13 @@ small {
 
 .end-screen-title {
   width: 75%;
-  height: 10%;
+  height: 15%;
   max-width: 37em;
   background-color: mintcream;
-  padding: 3em 3em;
+  padding: 1.8em 3em;
   position: absolute;
   transform: translate(-50%, -50%);
-  top: 22%;
+  top: 21%;
   left: 50%;
   text-align: center;
   border-radius: 1em;
@@ -280,7 +289,7 @@ small {
   font-size: 2.5em;
   font-weight: normal;
   font-style: normal;
-  font-family: "Caprasimo", display;
+  font-family: "superFunky", display;
   margin-bottom: 0.1em;
   margin-top: 0em;
 }
@@ -312,7 +321,7 @@ small {
   border-radius: .2em;
   width: 40%;
   font-size: 1em;
-  margin-bottom: .2em;
+  margin-bottom: 0em;
   margin-left: auto;
   margin-right: auto;
 }
@@ -449,7 +458,8 @@ small {
   }
 
   .end-screen-title {
-    padding: 2em 1.2em;
+    height: 12%;
+    padding: 1.4em 1.2em;
   }
   
   .end-screen {
@@ -496,6 +506,21 @@ small {
   }
   #playAgain {
     font-size: .8em;
+  }
+  .end-screen-title {
+    height: 11%;
+    padding: 1em 1.2em;
+    top: 23%;
+  }
+  #instructions {
+    font-size: .87em;
+  }
+  .timer-wrapper {
+    width: 24%;
+    height: 4.1%;
+  }
+  #timer {
+    font-size: 1.1em;
   }
 }
 
