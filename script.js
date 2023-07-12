@@ -844,11 +844,6 @@ function findOtherWords() {
       }
     }
 
-  console.log(nineLetterWords.length);
-  console.log(tenLetterWords.length);
-  console.log(elevenLetterWords.length);
-  console.log(twelveLetterWords.length);
-
   // choose random word from those arrays
   let randomNine = nineLetterWords[Math.floor(Math.random() * nineLetterWords.length)];
   let randomTen = tenLetterWords[Math.floor(Math.random() * tenLetterWords.length)];
