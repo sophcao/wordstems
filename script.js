@@ -864,7 +864,7 @@ function findOtherWords() {
   let htmlContent = "<span><b>Other Possible Words:</b> <i>";
 
   if (randomSeven) {
-    htmlContent += randomEight + ", ";
+    htmlContent += randomSeven + ", ";
   }
   if (randomEight) {
     htmlContent += randomEight + ", ";
